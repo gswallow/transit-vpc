@@ -6,9 +6,10 @@ resource "aws_instance" "pfsense_1" {
   instance_type           = "${var.INSTANCE_TYPE}"
   key_name                = "${aws_key_pair.pfsense.key_name}"
   monitoring              = true
+  user_data               = "${format("password=%s", random_string.password.result)}"
   tags {
     Name = "pfsense_1"
-    Environment = "${var.ENV}"
+    Organization = "${var.ORG}"
   }
 }
 
@@ -22,7 +23,7 @@ resource "aws_instance" "pfsense_2" {
   monitoring              = true
   tags {
     Name = "pfsense_2"
-    Environment = "${var.ENV}"
+    Organization = "${var.ORG}"
   }
 }
 
@@ -34,4 +35,8 @@ resource "aws_eip_association" "pfsense_1" {
 resource "aws_eip_association" "pfsense_2" {
   instance_id   = "${aws_instance.pfsense_2.id}"
   allocation_id = "${aws_eip.pfsense_2.id}"
+}
+
+output "pfsense_password" {
+  value = "${random_string.password.result}" 
 }

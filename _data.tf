@@ -1,6 +1,9 @@
 provider "aws" {}
 provider "template" {}
+provider "random" {}
 provider "tls" {}
+
+data "aws_caller_identity" "current" {}
 
 data "aws_region" "current" {}
 
@@ -23,3 +26,7 @@ data "aws_ami" "netgate" {
   }
 }
 
+resource "random_string" "password" {
+  length = 12
+  special = true
+}
