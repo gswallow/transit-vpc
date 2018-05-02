@@ -27,6 +27,40 @@ resource "aws_instance" "pfsense_2" {
   }
 }
 
+resource "aws_cloudwatch_metric_alarm" "pfsense_1" {
+  alarm_name                = "AutoRecoverpfSense1"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "3"
+  metric_name               = "StatusCheckFailed_System"
+  namespace                 = "AWS/EC2"
+  period                    = "60"
+  statistic                 = "Minimum"
+  threshold                 = "1"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  alarm_actions             = ["arn:aws:automate:${data.aws_region.current.name}:ec2:recover"]
+  insufficient_data_actions = []
+  dimensions {
+    InstanceId = "${aws_instance.pfsense_1.id}"
+  }
+}
+
+resource "aws_cloudwatch_metric_alarm" "pfsense_2" {
+  alarm_name                = "AutoRecoverpfSense2"
+  comparison_operator       = "GreaterThanOrEqualToThreshold"
+  evaluation_periods        = "3"
+  metric_name               = "StatusCheckFailed_System"
+  namespace                 = "AWS/EC2"
+  period                    = "60"
+  statistic                 = "Minimum"
+  threshold                 = "1"
+  alarm_description         = "This metric monitors ec2 cpu utilization"
+  alarm_actions             = ["arn:aws:automate:${data.aws_region.current.name}:ec2:recover"]
+  insufficient_data_actions = []
+  dimensions {
+    InstanceId = "${aws_instance.pfsense_2.id}"
+  }
+}
+
 resource "aws_eip_association" "pfsense_1" {
   instance_id   = "${aws_instance.pfsense_1.id}"
   allocation_id = "${aws_eip.pfsense_1.id}"
