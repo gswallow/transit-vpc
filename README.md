@@ -12,3 +12,30 @@ Some software must be installed prior to building an environment:
 - bundler (gem install bundler)
 - terraform
 
+## Policies
+
+There's a bucket to create with a bucket policy.
+
+```
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": [
+          "arn"aws:iam::XXX:root",
+          "arn"aws:iam::YYY:root"
+        ]
+      },
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "arn:aws:s3:::XXX/pfx/*"
+    }
+  ]
+}
+```
+
