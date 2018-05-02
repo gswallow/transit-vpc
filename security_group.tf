@@ -36,7 +36,7 @@ resource "aws_security_group" "vpn" {
     from_port = 500
     to_port = 500
     protocol = "UDP"
-    cidr_blocks = "${var.VPN_CIDR_BLOCK}" ]
+    cidr_blocks = [ "${var.VPN_CIDR_BLOCK}" ]
   }
   ingress {
     from_port = 1194
@@ -54,7 +54,7 @@ resource "aws_security_group" "vpn" {
     from_port = 4500
     to_port = 4500
     protocol = "UDP"
-    cidr_blocks = "${var.VPN_CIDR_BLOCK}" ]
+    cidr_blocks = [ "${var.VPN_CIDR_BLOCK}" ]
   }
   egress {
     from_port = 0
