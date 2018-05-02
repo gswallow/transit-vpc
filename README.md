@@ -30,5 +30,5 @@ If you are a customer configuring your VPC as a spoke to the transit VPC, add th
 | TF_VAR_SSH_CIDR_BLOCK | Locks down SSH access to a trusted CIDR block | 0.0.0.0/0 |
 | TF_VAR_HTTP_CIDR_BLOCK | Locks down HTTP access to a trusted CIDR block | 0.0.0.0/0 |
 | TF_VAR_HTTPS_CIDR_BLOCK | Locks down HTTPS access to a trusted CIDR block | 0.0.0.0/0 |
-| TF_VAR_OPENVPN_CIDR_BLOCK | Locks down OPENVPN access to a trusted CIDR block | 0.0.0.0/0 |
+| TF_VAR_VPN_CIDR_BLOCK | Locks down OPENVPN access to a trusted CIDR block | 0.0.0.0/0 |
 | TF_VAR_INSTANCE_TYPE | The instance type of each pfSense box | t2.micro |
