@@ -52,6 +52,6 @@ resource "aws_security_group" "vpn" {
   }
   tags {
     Name = "vpn-sg"
-    Environment = "${var.ENV}"
+    Organization = "${var.ORG}"
   }
 }
