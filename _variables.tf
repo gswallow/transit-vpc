@@ -1,7 +1,8 @@
 # Variables imported as TF_VAR_*
-variable "ENV" {}
+variable "ORG" {}
+variable "AWS_ACCOUNTS" {}
 
-# SSH bastion related variable
+# Security group related variable
 variable "SSH_CIDR_BLOCK" { default = "0.0.0.0/0" }
 variable "HTTP_CIDR_BLOCK" { default = "0.0.0.0/0" }
 variable "HTTPS_CIDR_BLOCK" { default = "0.0.0.0/0" }
