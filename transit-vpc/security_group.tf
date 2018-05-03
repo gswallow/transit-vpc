@@ -9,24 +9,6 @@ resource "aws_security_group" "vpn" {
     cidr_blocks = [ "${var.SSH_CIDR_BLOCK}" ]
   }
   ingress {
-    from_port = 80
-    to_port = 80
-    protocol = "TCP"
-    cidr_blocks = [ "${var.HTTP_CIDR_BLOCK}" ]
-  }
-  ingress {
-    from_port = 179
-    to_port = 179
-    protocol = "TCP"
-    cidr_blocks = [ "10.64.64.0/21" ]
-  }
-  ingress {
-    from_port = 179
-    to_port = 179
-    protocol = "UDP"
-    cidr_blocks = [ "10.64.64.0/21" ]
-  }
-  ingress {
     from_port = 443
     to_port = 443
     protocol = "TCP"
