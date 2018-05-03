@@ -26,6 +26,7 @@ conf
 
 set protocols bgp $LOCAL_BGP_AS network $LOCAL_PREFIX
 set protocols bgp $LOCAL_BGP_AS parameters router-id $ENI_ADDR
+set protocols static interface-route $LOCAL_PREFIX next-hop-interface eth0
 set vpn ipsec ipsec-interfaces interface eth0
 set vpn ipsec nat-traversal enable
 
@@ -105,11 +106,3 @@ set protocols bgp $LOCAL_BGP_AS neighbor $TUN2_INTERFACE_REMOTE_ADDR update-sour
 commit
 save
 EOF
-
-#set tunnel 1 local prefix $LOCAL_PREFIX
-#set tunnel 1 remote prefix $REMOTE_PREFIX
-#set tunnel 1 esp-group ${VPN_ID}-1
-
-#set tunnel 1 local prefix $LOCAL_PREFIX
-#set tunnel 1 remote prefix $REMOTE_PREFIX
-#set tunnel 1 esp-group ${VPN_ID}-2
