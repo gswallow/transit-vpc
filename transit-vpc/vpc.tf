@@ -64,14 +64,14 @@ resource "aws_route_table_association" "public_subnet_2" {
   route_table_id = "${aws_route_table.public_rtb.id}"
 }
 
-resource "aws_eip" "pfsense_1" {
+resource "aws_eip" "vyos_1" {
   vpc = true
   tags {
     Organization = "${var.ORG}"
-    Name = "pfsense_1_eip"
+    Name = "vyos_1_eip"
   }
 }
 
-output "pfsense_1_eip" {
-  value = "${aws_eip.pfsense_1.public_ip}"
+output "vyos_1_eip" {
+  value = "${aws_eip.vyos_1.public_ip}"
 }
