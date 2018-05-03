@@ -17,6 +17,10 @@ resource "aws_internet_gateway" "main" {
   }
 }
 
+################################################################################
+# Public subnets
+################################################################################
+
 resource "aws_subnet" "public_subnet_1" {
   vpc_id = "${aws_vpc.transit.id}"
   availability_zone = "${element(sort(data.aws_availability_zones.available.names), 0)}"
@@ -37,7 +41,7 @@ resource "aws_subnet" "public_subnet_2" {
   tags {
     Organization = "${var.ORG}"
     Type = "public"
-    Name = "${format("public-subnet-%s-100.64.65.0-24", element(sort(data.aws_availability_zones.available.names), 1))}"
+    Name = "${format("public-subnet-%s-100.64.64.0-24", element(sort(data.aws_availability_zones.available.names), 1))}"
   }
 }
 
@@ -72,6 +76,19 @@ resource "aws_eip" "pfsense_1" {
   }
 }
 
+resource "aws_eip" "pfsense_2" {
+  vpc = true
+  tags {
+    Organization = "${var.ORG}"
+    Name = "pfsense_2_eip"
+  }
+}
+
 output "pfsense_1_eip" {
   value = "${aws_eip.pfsense_1.public_ip}"
 }
+
+output "pfsense_2_eip" {
+  value = "${aws_eip.pfsense_2.public_ip}"
+}
+
