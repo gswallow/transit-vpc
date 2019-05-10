@@ -1,5 +1,9 @@
 # Transit VPC
 
+## Warning
+This repo is outdated.  AWS released the transit gateway a while ago and I'm catching up.
+
+## Inspiration
 [https://www.slideshare.net/AmazonWebServices/networking-many-vpcs-transit-and-shared-architectures-net404-reinvent-2017](https://www.slideshare.net/AmazonWebServices/networking-many-vpcs-transit-and-shared-architectures-net404-reinvent-2017)
 
 Work in progress!  This terraform config builds:
